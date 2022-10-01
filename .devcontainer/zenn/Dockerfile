@@ -1,5 +1,5 @@
 # Base image
-FROM node:15.14.0-buster-slim
+FROM node:current-buster-slim
 
 # Maintainer
 LABEL maintainer="nagakuta <nagakuta0314+github@gmail.com>"
@@ -11,4 +11,6 @@ WORKDIR /workspace
 ENV NODE_ENV=production
 RUN npm config set registry http://registry.npmjs.org && \
     npm install --production zenn-cli --verbose && \
-    rm /workspace/package*.json
+    rm /workspace/package*.json && \
+    apt-get update && \
+    apt-get install git -y
