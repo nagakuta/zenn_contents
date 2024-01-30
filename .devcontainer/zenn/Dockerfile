@@ -5,12 +5,10 @@ FROM node:current-buster-slim
 LABEL maintainer="nagakuta <nagakuta0314+github@gmail.com>"
 
 # Workdir
-WORKDIR /workspace
+WORKDIR /workspace/zenn_contents
 
 # Install Zenn CLI
-ENV NODE_ENV=production
-RUN npm config set registry http://registry.npmjs.org && \
-    npm install --production zenn-cli --verbose && \
-    rm /workspace/package*.json && \
+RUN npm init -y && \
+    npm install -g zenn-cli --verbose && \
     apt-get update && \
     apt-get install git -y
